@@ -3,6 +3,7 @@ import DashboardHeader from "@/components/layout/DashboardHeader";
 import { KPICard } from "@/components/dashboard/KPICard";
 import { TrendChart } from "@/components/dashboard/TrendChart";
 import { DemandHeatmap } from "@/components/dashboard/DemandHeatmap";
+import { TopRoutesTable } from "@/components/dashboard/TopRoutesTable";
 import {
   ActivityIcon,
   ClockIcon,
@@ -51,6 +52,11 @@ const Index = () => {
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 mb-8">
         <TrendChart />
         <DemandHeatmap />
+      </div>
+
+      {/* Top Routes Table */}
+      <div className="mb-8">
+        <TopRoutesTable />
       </div>
     </div>
   );
