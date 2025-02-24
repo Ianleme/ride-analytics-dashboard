@@ -1,6 +1,8 @@
 
 import DashboardHeader from "@/components/layout/DashboardHeader";
 import { KPICard } from "@/components/dashboard/KPICard";
+import { TrendChart } from "@/components/dashboard/TrendChart";
+import { DemandHeatmap } from "@/components/dashboard/DemandHeatmap";
 import {
   ActivityIcon,
   ClockIcon,
@@ -12,6 +14,8 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background p-8">
       <DashboardHeader />
+      
+      {/* KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <KPICard
           title="Total Rides"
@@ -41,6 +45,12 @@ const Index = () => {
           trend="up"
           icon={<UsersIcon className="h-6 w-6" />}
         />
+      </div>
+
+      {/* Charts */}
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 mb-8">
+        <TrendChart />
+        <DemandHeatmap />
       </div>
     </div>
   );
