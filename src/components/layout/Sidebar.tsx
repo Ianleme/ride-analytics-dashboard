@@ -7,6 +7,7 @@ import {
   TrendingUp,
   MenuIcon,
   LogOut,
+  Cloud,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -30,6 +31,11 @@ export function Sidebar() {
       name: "Predictions",
       href: "/predictions",
       icon: TrendingUp,
+    },
+    {
+      name: "Weather",
+      href: "/weather",
+      icon: Cloud,
     },
   ];
 

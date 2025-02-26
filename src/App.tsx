@@ -8,6 +8,7 @@ import { BaseLayout } from "./components/layout/BaseLayout";
 import Index from "./pages/Index";
 import Stations from "./pages/Stations";
 import Predictions from "./pages/Predictions";
+import Weather from "./pages/Weather";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -40,6 +41,14 @@ const App = () => (
             element={
               <BaseLayout>
                 <Predictions />
+              </BaseLayout>
+            }
+          />
+          <Route
+            path="/weather"
+            element={
+              <BaseLayout>
+                <Weather />
               </BaseLayout>
             }
           />
