@@ -50,24 +50,24 @@ const routes = [
 export const TopRoutesTable = () => {
   return (
     <Card className="p-6 glass-card">
-      <h3 className="text-lg font-semibold mb-4">Top Routes</h3>
+      <h3 className="text-lg font-semibold mb-4 text-neutral-900">Top Routes</h3>
       <div className="overflow-x-auto">
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Start Station</TableHead>
-              <TableHead>End Station</TableHead>
-              <TableHead className="text-right">Volume</TableHead>
-              <TableHead className="text-right">Avg. Duration</TableHead>
+              <TableHead className="text-neutral-600">Start Station</TableHead>
+              <TableHead className="text-neutral-600">End Station</TableHead>
+              <TableHead className="text-right text-neutral-600">Volume</TableHead>
+              <TableHead className="text-right text-neutral-600">Avg. Duration</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {routes.map((route) => (
-              <TableRow key={route.id} className="hover:bg-muted/50">
-                <TableCell className="font-medium">{route.start}</TableCell>
-                <TableCell>{route.end}</TableCell>
-                <TableCell className="text-right">{route.volume}</TableCell>
-                <TableCell className="text-right">
+              <TableRow key={route.id} className="hover:bg-neutral-50">
+                <TableCell className="font-medium text-neutral-900">{route.start}</TableCell>
+                <TableCell className="text-neutral-700">{route.end}</TableCell>
+                <TableCell className="text-right text-neutral-700">{route.volume}</TableCell>
+                <TableCell className="text-right text-neutral-700">
                   {route.avgDuration} min
                 </TableCell>
               </TableRow>

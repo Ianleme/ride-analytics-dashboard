@@ -7,7 +7,7 @@ const DashboardHeader = () => {
   return (
     <header className="animate-fadeIn w-full px-8 py-6 glass-card rounded-xl mb-8">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-semibold">Dashboard Overview</h1>
+        <h1 className="text-2xl font-semibold text-neutral-900">Dashboard Overview</h1>
         <div className="flex items-center space-x-4">
           <DateRangePicker />
           <SelectFilter

@@ -23,7 +23,7 @@ const data = [
 export const TrendChart = () => {
   return (
     <Card className="p-6 glass-card">
-      <h3 className="text-lg font-semibold mb-4">Trend Over Time</h3>
+      <h3 className="text-lg font-semibold mb-4 text-neutral-900">Trend Over Time</h3>
       <div className="h-[400px]">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
@@ -32,23 +32,23 @@ export const TrendChart = () => {
           >
             <defs>
               <linearGradient id="memberGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#6366f1" stopOpacity={0.3} />
-                <stop offset="95%" stopColor="#6366f1" stopOpacity={0} />
+                <stop offset="5%" stopColor="#DA2128" stopOpacity={0.3} />
+                <stop offset="95%" stopColor="#DA2128" stopOpacity={0} />
               </linearGradient>
               <linearGradient id="casualGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#f59e0b" stopOpacity={0.3} />
-                <stop offset="95%" stopColor="#f59e0b" stopOpacity={0} />
+                <stop offset="5%" stopColor="#4B5563" stopOpacity={0.3} />
+                <stop offset="95%" stopColor="#4B5563" stopOpacity={0} />
               </linearGradient>
             </defs>
-            <CartesianGrid strokeDasharray="3 3" className="stroke-gray-200" />
-            <XAxis dataKey="date" className="text-xs" />
-            <YAxis className="text-xs" />
+            <CartesianGrid strokeDasharray="3 3" className="stroke-neutral-200" />
+            <XAxis dataKey="date" className="text-xs text-neutral-600" />
+            <YAxis className="text-xs text-neutral-600" />
             <Tooltip />
             <Legend />
             <Area
               type="monotone"
               dataKey="member"
-              stroke="#6366f1"
+              stroke="#DA2128"
               fillOpacity={1}
               fill="url(#memberGradient)"
               name="Member Rides"
@@ -56,7 +56,7 @@ export const TrendChart = () => {
             <Area
               type="monotone"
               dataKey="casual"
-              stroke="#f59e0b"
+              stroke="#4B5563"
               fillOpacity={1}
               fill="url(#casualGradient)"
               name="Casual Rides"

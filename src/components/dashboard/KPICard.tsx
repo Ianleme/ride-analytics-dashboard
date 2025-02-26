@@ -23,20 +23,20 @@ export function KPICard({
     <Card className={cn("p-6 hover-scale glass-card", className)}>
       <div className="flex justify-between">
         <div>
-          <p className="text-sm font-medium text-muted-foreground">{title}</p>
-          <h3 className="text-2xl font-bold mt-2">{value}</h3>
+          <p className="text-sm font-medium text-neutral-600">{title}</p>
+          <h3 className="text-2xl font-bold mt-2 text-neutral-900">{value}</h3>
           {change && (
             <p
               className={cn("text-sm mt-1", {
-                "text-green-600": trend === "up",
-                "text-red-600": trend === "down",
+                "text-primary": trend === "up",
+                "text-destructive": trend === "down",
               })}
             >
               {change}
             </p>
           )}
         </div>
-        {icon && <div className="text-muted-foreground">{icon}</div>}
+        {icon && <div className="text-neutral-400">{icon}</div>}
       </div>
     </Card>
   );
