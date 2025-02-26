@@ -9,6 +9,8 @@ import Index from "./pages/Index";
 import Stations from "./pages/Stations";
 import Predictions from "./pages/Predictions";
 import Weather from "./pages/Weather";
+import Intro from "./pages/Intro";
+import Help from "./pages/Help";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -49,6 +51,22 @@ const App = () => (
             element={
               <BaseLayout>
                 <Weather />
+              </BaseLayout>
+            }
+          />
+          <Route
+            path="/intro"
+            element={
+              <BaseLayout>
+                <Intro />
+              </BaseLayout>
+            }
+          />
+          <Route
+            path="/help"
+            element={
+              <BaseLayout>
+                <Help />
               </BaseLayout>
             }
           />

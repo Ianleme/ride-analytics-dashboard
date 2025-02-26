@@ -8,6 +8,8 @@ import {
   MenuIcon,
   LogOut,
   Cloud,
+  HelpCircle,
+  Info,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -36,6 +38,19 @@ export function Sidebar() {
       name: "Weather",
       href: "/weather",
       icon: Cloud,
+    },
+  ];
+
+  const bottomNavigation = [
+    {
+      name: "Introduction",
+      href: "/intro",
+      icon: Info,
+    },
+    {
+      name: "Help",
+      href: "/help",
+      icon: HelpCircle,
     },
   ];
 
@@ -82,6 +97,24 @@ export function Sidebar() {
       </nav>
 
       <div className="p-4 border-t border-neutral-200">
+        <ul className="space-y-2 mb-4">
+          {bottomNavigation.map((item) => (
+            <li key={item.name}>
+              <Link
+                to={item.href}
+                className={cn(
+                  "flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors",
+                  location.pathname === item.href
+                    ? "bg-primary text-white"
+                    : "text-neutral-600 hover:bg-neutral-100"
+                )}
+              >
+                <item.icon size={20} />
+                {!collapsed && <span>{item.name}</span>}
+              </Link>
+            </li>
+          ))}
+        </ul>
         <Button
           variant="ghost"
           className="w-full justify-start text-neutral-600 hover:text-neutral-900"
