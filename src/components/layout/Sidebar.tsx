@@ -10,6 +10,7 @@ import {
   Cloud,
   HelpCircle,
   Info,
+  BarChart2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -38,6 +39,11 @@ export function Sidebar() {
       name: "Weather",
       href: "/weather",
       icon: Cloud,
+    },
+    {
+      name: "Relatório",
+      href: "/relatorio",
+      icon: BarChart2,
     },
   ];
 

@@ -12,6 +12,7 @@ import Weather from "./pages/Weather";
 import Intro from "./pages/Intro";
 import Help from "./pages/Help";
 import NotFound from "./pages/NotFound";
+import Relatorio from "./pages/Relatorio";
 
 const queryClient = new QueryClient();
 
@@ -51,6 +52,14 @@ const App = () => (
             element={
               <BaseLayout>
                 <Weather />
+              </BaseLayout>
+            }
+          />
+          <Route
+            path="/relatorio"
+            element={
+              <BaseLayout>
+                <Relatorio />
               </BaseLayout>
             }
           />
