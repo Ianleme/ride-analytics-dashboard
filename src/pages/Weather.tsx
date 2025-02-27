@@ -1,4 +1,3 @@
-
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,21 +10,6 @@ import {
   ArrowDown,
   ArrowUp,
 } from "lucide-react";
-import {
-  LineChart,
-  Line,
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-  ScatterChart,
-  Scatter,
-  ZAxis,
-} from "recharts";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const weatherData = [
@@ -157,18 +141,12 @@ const Weather = () => {
                 This histogram shows the total number of rides for each temperature range, revealing optimal temperature zones for bike usage.
               </p>
             </div>
-            <div className="h-[400px]">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={ridesByTemperature}>
-                  <CartesianGrid strokeDasharray="3 3" className="stroke-neutral-200" />
-                  <XAxis dataKey="temperature" className="text-neutral-600" />
-                  <YAxis className="text-neutral-600" />
-                  <Tooltip />
-                  <Legend />
-                  <Bar dataKey="rides" name="Number of Rides" fill="#DA2128" />
-                  <Bar dataKey="frequency" name="Temperature Frequency (days)" fill="#4B5563" />
-                </BarChart>
-              </ResponsiveContainer>
+            <div className="h-[400px] flex items-center justify-center">
+              <p className="text-neutral-600">
+                Histograma de distribuição de rides por temperatura será exibido aqui.
+                <br />
+                <small className="text-neutral-500">Requer integração com Recharts</small>
+              </p>
             </div>
             <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
               <Card className="p-4 bg-neutral-50">
@@ -198,17 +176,12 @@ const Weather = () => {
                 This chart demonstrates how different levels of rainfall affect the number of daily bike rides.
               </p>
             </div>
-            <div className="h-[400px]">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={rainImpactData}>
-                  <CartesianGrid strokeDasharray="3 3" className="stroke-neutral-200" />
-                  <XAxis dataKey="rainLevel" className="text-neutral-600" />
-                  <YAxis className="text-neutral-600" />
-                  <Tooltip />
-                  <Legend />
-                  <Bar dataKey="rides" name="Average Daily Rides" fill="#DA2128" />
-                </BarChart>
-              </ResponsiveContainer>
+            <div className="h-[400px] flex items-center justify-center">
+              <p className="text-neutral-600">
+                Gráfico de impacto da chuva nas rides diárias será exibido aqui.
+                <br />
+                <small className="text-neutral-500">Requer integração com Recharts</small>
+              </p>
             </div>
             <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
               {rainImpactData.slice(1).map((item, index) => (
@@ -233,40 +206,12 @@ const Weather = () => {
                 This scatter plot shows the relationship between temperature, ride volume, and how frequently each temperature occurs.
               </p>
             </div>
-            <div className="h-[400px]">
-              <ResponsiveContainer width="100%" height="100%">
-                <ScatterChart>
-                  <CartesianGrid strokeDasharray="3 3" className="stroke-neutral-200" />
-                  <XAxis 
-                    dataKey="temp" 
-                    name="Temperature (°C)" 
-                    className="text-neutral-600"
-                    label={{ value: "Temperature (°C)", position: "insideBottom", offset: -5 }}
-                  />
-                  <YAxis 
-                    dataKey="rides" 
-                    name="Average Rides" 
-                    className="text-neutral-600"
-                    label={{ value: "Average Rides", angle: -90, position: "insideLeft" }}
-                  />
-                  <ZAxis 
-                    dataKey="frequency" 
-                    range={[50, 400]} 
-                    name="Frequency (days/year)" 
-                  />
-                  <Tooltip 
-                    cursor={{ strokeDasharray: '3 3' }}
-                    formatter={(value, name) => [value, name]}
-                    labelFormatter={label => `Temperature: ${label}°C`}
-                  />
-                  <Legend />
-                  <Scatter 
-                    name="Temperature-Rides Correlation" 
-                    data={temperatureCorrelationData} 
-                    fill="#DA2128" 
-                  />
-                </ScatterChart>
-              </ResponsiveContainer>
+            <div className="h-[400px] flex items-center justify-center">
+              <p className="text-neutral-600">
+                Gráfico de correlação entre temperatura, volume de rides e frequência será exibido aqui.
+                <br />
+                <small className="text-neutral-500">Requer integração com Recharts</small>
+              </p>
             </div>
             <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
               <Card className="p-4 bg-neutral-50">
@@ -291,33 +236,12 @@ const Weather = () => {
           <h3 className="text-lg font-semibold mb-4 text-neutral-900">
             Temperature & Humidity Trend
           </h3>
-          <div className="h-[300px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={weatherData}>
-                <CartesianGrid strokeDasharray="3 3" className="stroke-neutral-200" />
-                <XAxis dataKey="time" className="text-neutral-600" />
-                <YAxis yAxisId="left" className="text-neutral-600" />
-                <YAxis yAxisId="right" orientation="right" className="text-neutral-600" />
-                <Tooltip />
-                <Legend />
-                <Line
-                  yAxisId="left"
-                  type="monotone"
-                  dataKey="temp"
-                  name="Temperature (°C)"
-                  stroke="#DA2128"
-                  strokeWidth={2}
-                />
-                <Line
-                  yAxisId="right"
-                  type="monotone"
-                  dataKey="humidity"
-                  name="Humidity (%)"
-                  stroke="#4B5563"
-                  strokeWidth={2}
-                />
-              </LineChart>
-            </ResponsiveContainer>
+          <div className="h-[300px] flex items-center justify-center">
+            <p className="text-neutral-600">
+              Gráfico de tendência de temperatura e umidade será exibido aqui.
+              <br />
+              <small className="text-neutral-500">Requer integração com Recharts</small>
+            </p>
           </div>
         </Card>
 
@@ -325,23 +249,12 @@ const Weather = () => {
           <h3 className="text-lg font-semibold mb-4 text-neutral-900">
             Precipitation Forecast
           </h3>
-          <div className="h-[300px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={weatherData}>
-                <CartesianGrid strokeDasharray="3 3" className="stroke-neutral-200" />
-                <XAxis dataKey="time" className="text-neutral-600" />
-                <YAxis className="text-neutral-600" />
-                <Tooltip />
-                <Legend />
-                <Line
-                  type="monotone"
-                  dataKey="rain"
-                  name="Rainfall (mm)"
-                  stroke="#4B5563"
-                  strokeWidth={2}
-                />
-              </LineChart>
-            </ResponsiveContainer>
+          <div className="h-[300px] flex items-center justify-center">
+            <p className="text-neutral-600">
+              Gráfico de previsão de precipitação será exibido aqui.
+              <br />
+              <small className="text-neutral-500">Requer integração com Recharts</small>
+            </p>
           </div>
         </Card>
       </div>

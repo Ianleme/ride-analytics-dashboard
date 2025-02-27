@@ -479,7 +479,8 @@ const Stations = () => {
                   className="w-full mt-6"
                   onClick={() => {
                     setSelectedZone(zone.zone);
-                    document.querySelector('[data-state="active"][value="list"]')?.click();
+                    const listTab = document.querySelector('[value="list"]') as HTMLElement;
+                    if (listTab) listTab.click();
                   }}
                 >
                   View Stations
@@ -490,23 +491,12 @@ const Stations = () => {
           
           <Card className="glass-card p-6">
             <h3 className="text-lg font-semibold text-neutral-900 mb-4">Comparative Zone Performance</h3>
-            <div className="h-[400px]">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart
-                  data={zoneStats}
-                  margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-                >
-                  <CartesianGrid strokeDasharray="3 3" className="stroke-neutral-200" />
-                  <XAxis dataKey="zone" />
-                  <YAxis yAxisId="left" orientation="left" />
-                  <YAxis yAxisId="right" orientation="right" />
-                  <Tooltip />
-                  <Legend />
-                  <Bar yAxisId="left" dataKey="stationCount" name="Station Count" fill="#A5A9B8" />
-                  <Bar yAxisId="left" dataKey="bikeAvailability" name="Bike Availability (%)" fill="#DA2128" />
-                  <Bar yAxisId="right" dataKey="averageUsage" name="Avg. Usage" fill="#4B5563" />
-                </BarChart>
-              </ResponsiveContainer>
+            <div className="h-[400px] flex items-center justify-center">
+              <p className="text-neutral-600">
+                O gráfico de barras comparativo de desempenho por zona será exibido aqui.
+                <br />
+                <small className="text-neutral-500">Requer integração com Recharts</small>
+              </p>
             </div>
           </Card>
         </TabsContent>
@@ -520,47 +510,23 @@ const Stations = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <Card className="glass-card p-6">
               <h3 className="text-lg font-semibold text-neutral-900 mb-4">Status Distribution</h3>
-              <div className="h-[300px]">
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart
-                    data={[
-                      { name: 'Active', value: allStations.filter(s => s.status === 'active').length },
-                      { name: 'Maintenance', value: allStations.filter(s => s.status === 'maintenance').length },
-                      { name: 'Empty', value: allStations.filter(s => s.bikes === 0 && s.status === 'active').length },
-                      { name: 'Full', value: allStations.filter(s => s.bikes === s.docks && s.status === 'active').length },
-                    ]}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" className="stroke-neutral-200" />
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip />
-                    <Bar dataKey="value" name="Stations" fill="#DA2128" />
-                  </BarChart>
-                </ResponsiveContainer>
+              <div className="h-[300px] flex items-center justify-center">
+                <p className="text-neutral-600">
+                  Gráfico de distribuição de status será exibido aqui.
+                  <br />
+                  <small className="text-neutral-500">Requer integração com Recharts</small>
+                </p>
               </div>
             </Card>
             
             <Card className="glass-card p-6">
               <h3 className="text-lg font-semibold text-neutral-900 mb-4">Bike Availability Ranges</h3>
-              <div className="h-[300px]">
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart
-                    data={[
-                      { range: '0%', value: allStations.filter(s => s.bikes === 0).length },
-                      { range: '1-25%', value: allStations.filter(s => s.bikes > 0 && s.bikes / s.docks <= 0.25).length },
-                      { range: '26-50%', value: allStations.filter(s => s.bikes / s.docks > 0.25 && s.bikes / s.docks <= 0.5).length },
-                      { range: '51-75%', value: allStations.filter(s => s.bikes / s.docks > 0.5 && s.bikes / s.docks <= 0.75).length },
-                      { range: '76-99%', value: allStations.filter(s => s.bikes / s.docks > 0.75 && s.bikes < s.docks).length },
-                      { range: '100%', value: allStations.filter(s => s.bikes === s.docks).length },
-                    ]}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" className="stroke-neutral-200" />
-                    <XAxis dataKey="range" />
-                    <YAxis />
-                    <Tooltip />
-                    <Bar dataKey="value" name="Stations" fill="#4B5563" />
-                  </BarChart>
-                </ResponsiveContainer>
+              <div className="h-[300px] flex items-center justify-center">
+                <p className="text-neutral-600">
+                  Gráfico de faixas de disponibilidade será exibido aqui.
+                  <br />
+                  <small className="text-neutral-500">Requer integração com Recharts</small>
+                </p>
               </div>
             </Card>
             
