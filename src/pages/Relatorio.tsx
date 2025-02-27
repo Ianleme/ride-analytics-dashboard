@@ -1,4 +1,3 @@
-
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -250,19 +249,27 @@ const Relatorio = () => {
                   <XAxis dataKey="year" className="text-neutral-600" />
                   <YAxis className="text-neutral-600" />
                   <Tooltip 
-                    formatter={(value, name, props) => {
-                      return [`R$ ${value.toLocaleString()}`, props.payload.projected ? "Projeção" : "Receita"];
-                    }} 
+                    formatter={(value) => `R$ ${value.toLocaleString()}`}
                   />
                   <Legend />
                   <Line 
                     type="monotone" 
                     dataKey="value" 
-                    name="Receita Anual" 
+                    name="Receita Real" 
                     stroke="#DA2128" 
                     strokeWidth={2} 
                     dot={{ fill: "#DA2128" }}
-                    strokeDasharray={(entry) => entry.projected ? "5 5" : "0"}
+                    connectNulls
+                  />
+                  <Line 
+                    type="monotone" 
+                    dataKey="value" 
+                    name="Projeção" 
+                    stroke="#DA2128" 
+                    strokeWidth={2} 
+                    strokeDasharray="5 5"
+                    dot={{ fill: "#DA2128" }}
+                    connectNulls
                   />
                 </LineChart>
               </ResponsiveContainer>
