@@ -23,23 +23,28 @@ export function KPICard({
   return (
     <Card 
       className={cn(
-        "p-6 hover-scale bg-gradient-to-br border transition-all duration-300 animate-fade-in",
+        "p-5 transition-all duration-300 animate-fade-in border-0 shadow-sm hover:shadow-md",
         className
       )}
     >
-      <div className="flex justify-between">
-        <div className="space-y-1">
-          <p className="text-sm font-medium text-muted-foreground">{title}</p>
-          <h3 className="text-2xl font-bold text-foreground">{value}</h3>
+      <div className="flex justify-between items-center">
+        {icon && (
+          <div className="text-muted-foreground/70 mr-3">
+            {icon}
+          </div>
+        )}
+        <div className="flex-1">
+          <p className="text-sm font-medium text-muted-foreground mb-1">{title}</p>
+          <h3 className="text-2xl font-semibold text-foreground">{value}</h3>
           {change && (
             <div className="flex items-center mt-1">
               {trend === "up" ? (
-                <TrendingUp className="h-4 w-4 text-emerald-500 mr-1" />
+                <TrendingUp className="h-3 w-3 text-emerald-500 mr-1" />
               ) : (
-                <TrendingDown className="h-4 w-4 text-destructive mr-1" />
+                <TrendingDown className="h-3 w-3 text-destructive mr-1" />
               )}
               <p
-                className={cn("text-sm", {
+                className={cn("text-xs", {
                   "text-emerald-500": trend === "up",
                   "text-destructive": trend === "down",
                 })}
@@ -49,11 +54,6 @@ export function KPICard({
             </div>
           )}
         </div>
-        {icon && (
-          <div className="bg-background/60 p-3 rounded-full shadow-sm">
-            {icon}
-          </div>
-        )}
       </div>
     </Card>
   );
