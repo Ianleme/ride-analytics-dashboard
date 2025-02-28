@@ -7,13 +7,13 @@ import { TopRoutesTable } from "@/components/dashboard/TopRoutesTable";
 import {
   ArrowUpRight,
   Calendar,
+  Clock,
   PieChart,
   TrendingUp,
   Users,
   Bike,
   MapPin,
   ThermometerSun,
-  Clock,
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { DateRangePicker } from "@/components/ui/date-range-picker";
@@ -96,32 +96,32 @@ const Index = () => {
           value="1,234K"
           change="+12.3% vs last month"
           trend="up"
-          icon={<Bike className="h-5 w-5" />}
-          className="bg-background"
+          icon={<Bike className="h-6 w-6 text-primary/70" />}
+          className="from-primary/5 to-primary/10 border-primary/20 shadow-md hover:shadow-lg"
         />
         <KPICard
           title="Average Duration"
           value="18.5 min"
           change="-2.1% vs last month"
           trend="down"
-          icon={<Clock className="h-5 w-5" />}
-          className="bg-background"
+          icon={<Clock className="h-6 w-6 text-amber-500/70" />}
+          className="from-amber-50 to-amber-100/30 border-amber-200/50 shadow-md hover:shadow-lg"
         />
         <KPICard
           title="Monthly Growth"
           value="+15.2%"
           change="5.3% higher than target"
           trend="up"
-          icon={<TrendingUp className="h-5 w-5" />}
-          className="bg-background"
+          icon={<TrendingUp className="h-6 w-6 text-emerald-500/70" />}
+          className="from-emerald-50 to-emerald-100/30 border-emerald-200/50 shadow-md hover:shadow-lg"
         />
         <KPICard
           title="Member/Casual Split"
           value="68/32"
           change="2% more members"
           trend="up"
-          icon={<Users className="h-5 w-5" />}
-          className="bg-background"
+          icon={<Users className="h-6 w-6 text-accent/70" />}
+          className="from-accent/10 to-accent/20 border-accent/30 shadow-md hover:shadow-lg"
         />
       </div>
 
@@ -129,24 +129,24 @@ const Index = () => {
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4 text-foreground">Featured Metrics</h2>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <Card className="p-6 col-span-1 lg:col-span-2 bg-background border-0 shadow-sm">
+          <Card className="glass-card p-6 col-span-1 lg:col-span-2 hover-scale animate-fade-in">
             <div className="flex items-center justify-between mb-4">
               <div>
                 <h3 className="text-lg font-semibold text-foreground">Ride Volume Trends</h3>
                 <p className="text-sm text-muted-foreground">Last 6 months rider activity</p>
               </div>
-              <PieChart className="h-5 w-5 text-muted-foreground/70" />
+              <PieChart className="h-5 w-5 text-primary/70" />
             </div>
             <TrendChart />
           </Card>
           
-          <Card className="p-6 bg-background border-0 shadow-sm">
+          <Card className="glass-card p-6 hover-scale animate-fade-in">
             <div className="flex items-center justify-between mb-4">
               <div>
                 <h3 className="text-lg font-semibold text-foreground">Weather Impact</h3>
                 <p className="text-sm text-muted-foreground">Effect on ridership</p>
               </div>
-              <ThermometerSun className="h-5 w-5 text-muted-foreground/70" />
+              <ThermometerSun className="h-5 w-5 text-amber-500" />
             </div>
             
             <div className="space-y-4">
@@ -200,7 +200,7 @@ const Index = () => {
             View by Location
           </Button>
         </div>
-        <Card className="p-6 bg-background border-0 shadow-sm">
+        <Card className="glass-card p-6 hover-scale animate-fade-in">
           <DemandHeatmap />
         </Card>
       </div>
@@ -208,7 +208,7 @@ const Index = () => {
       {/* Top Routes */}
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4 text-foreground">Popular Routes Analysis</h2>
-        <Card className="p-6 bg-background border-0 shadow-sm">
+        <Card className="glass-card p-6 hover-scale animate-fade-in">
           <TopRoutesTable />
         </Card>
       </div>
