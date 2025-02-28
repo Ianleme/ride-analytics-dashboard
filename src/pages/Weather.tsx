@@ -178,23 +178,6 @@ const Weather = () => {
                 </BarChart>
               </ResponsiveContainer>
             </div>
-            <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-              <Card className="p-4 bg-neutral-50">
-                <p className="text-sm font-medium text-neutral-600">Optimal Temperature</p>
-                <p className="text-2xl font-bold text-primary">21-25°C</p>
-                <p className="text-xs text-neutral-500 mt-1">Highest ride volume</p>
-              </Card>
-              <Card className="p-4 bg-neutral-50">
-                <p className="text-sm font-medium text-neutral-600">Average Rides per Day</p>
-                <p className="text-2xl font-bold text-neutral-900">486</p>
-                <p className="text-xs text-neutral-500 mt-1">Across all temperatures</p>
-              </Card>
-              <Card className="p-4 bg-neutral-50">
-                <p className="text-sm font-medium text-neutral-600">Temperature Sensitivity</p>
-                <p className="text-2xl font-bold text-neutral-900">High</p>
-                <p className="text-xs text-neutral-500 mt-1">75% variation by temperature</p>
-              </Card>
-            </div>
           </TabsContent>
           
           <TabsContent value="rain">
@@ -226,18 +209,6 @@ const Weather = () => {
                 </BarChart>
               </ResponsiveContainer>
             </div>
-            <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-              {rainImpactData.slice(1).map((item, index) => (
-                <Card key={index} className="p-4 bg-neutral-50">
-                  <p className="text-sm font-medium text-neutral-600">{item.rainLevel}</p>
-                  <div className="flex items-center mt-1">
-                    <ArrowDown className="h-4 w-4 text-red-500 mr-1" />
-                    <p className="text-lg font-bold text-red-500">{Math.abs(item.changePercent)}%</p>
-                  </div>
-                  <p className="text-xs text-neutral-500 mt-1">Reduction in rides</p>
-                </Card>
-              ))}
-            </div>
           </TabsContent>
           
           <TabsContent value="correlation">
@@ -268,20 +239,6 @@ const Weather = () => {
                   <Scatter name="Temperature-Rides Correlation" data={temperatureCorrelationData} fill="#8884d8" />
                 </ScatterChart>
               </ResponsiveContainer>
-            </div>
-            <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Card className="p-4 bg-neutral-50">
-                <p className="text-sm font-medium text-neutral-600">Key Insight</p>
-                <p className="text-md font-semibold text-neutral-900 mt-1">
-                  Optimal temperature range of 20-25°C shows highest ride volume, with significantly lower usage at temperature extremes.
-                </p>
-              </Card>
-              <Card className="p-4 bg-neutral-50">
-                <p className="text-sm font-medium text-neutral-600">Weighted Average</p>
-                <p className="text-md font-semibold text-neutral-900 mt-1">
-                  When weighted by frequency, the average ride volume is 450 rides per day, with 18°C being the most common temperature.
-                </p>
-              </Card>
             </div>
           </TabsContent>
         </Tabs>
