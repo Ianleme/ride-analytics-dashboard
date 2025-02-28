@@ -8,7 +8,15 @@ import {
   TrendingUp,
   Cloud,
   ArrowRight,
+  BarChart2,
+  ChevronDown,
 } from "lucide-react";
+import { 
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger
+} from "@/components/ui/accordion";
 
 const features = [
   {
@@ -17,6 +25,13 @@ const features = [
     description:
       "Monitor bike system performance with live metrics, usage patterns, and key performance indicators.",
     href: "/",
+    details: [
+      "Live KPI Cards showing total rides, average duration, monthly growth, and member/casual split",
+      "Trend charts showing ride patterns over time to identify peak hours and days",
+      "Heat map visualization of demand across different time periods",
+      "Table of top routes with popularity metrics and growth indicators",
+      "Interactive charts that allow you to analyze system performance from multiple angles"
+    ]
   },
   {
     icon: MapPin,
@@ -24,6 +39,13 @@ const features = [
     description:
       "View and manage all bike stations, track bike availability, and monitor station status in real-time.",
     href: "/stations",
+    details: [
+      "Interactive map showing all stations with status indicators and capacity information",
+      "Detailed table of stations with sorting and filtering capabilities",
+      "Live status indicators showing which stations need rebalancing",
+      "Capacity utilization metrics to identify bottlenecks in the system",
+      "Historical occupancy data to track station performance over time"
+    ]
   },
   {
     icon: TrendingUp,
@@ -31,6 +53,13 @@ const features = [
     description:
       "Access AI-powered demand forecasts to optimize bike distribution and maintain service quality.",
     href: "/predictions",
+    details: [
+      "Machine learning-based demand predictions for the next 24 hours, week, and month",
+      "Station-specific forecasts to target rebalancing efforts efficiently",
+      "Weather-adjusted demand models that account for environmental factors",
+      "Rebalancing recommendations based on predicted imbalances",
+      "Impact factor analysis showing how different variables affect demand"
+    ]
   },
   {
     icon: Cloud,
@@ -38,6 +67,27 @@ const features = [
     description:
       "Stay informed about weather conditions and their impact on bike system operations.",
     href: "/weather",
+    details: [
+      "Current weather conditions including temperature, humidity, wind, and sky conditions",
+      "Temperature and humidity trend forecasts to plan for changing conditions",
+      "Precipitation forecasts to anticipate reduced demand during rainfall",
+      "Analysis of how weather impacts ride volume across different temperature ranges",
+      "Historical weather data correlated with ride patterns to identify important relationships"
+    ]
+  },
+  {
+    icon: BarChart2,
+    title: "Business Performance Reports",
+    description:
+      "Comprehensive business analytics and reporting to track system performance and financial metrics.",
+    href: "/relatorio",
+    details: [
+      "Financial performance dashboards with revenue tracking and projections",
+      "Operational efficiency metrics including bike utilization and maintenance costs",
+      "User demographics and behavior analysis to understand customer segments",
+      "Comparative performance against historical benchmarks and targets",
+      "Exportable reports for stakeholder presentations and planning sessions"
+    ]
   },
 ];
 
@@ -54,7 +104,7 @@ const Intro = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+      <div className="grid grid-cols-1 gap-6 mb-12">
         {features.map((feature) => (
           <Card
             key={feature.title}
@@ -69,6 +119,22 @@ const Intro = () => {
                   {feature.title}
                 </h3>
                 <p className="text-neutral-600 mb-4">{feature.description}</p>
+                
+                <Accordion type="single" collapsible className="mb-4">
+                  <AccordionItem value={`feature-${feature.title}`}>
+                    <AccordionTrigger className="text-sm">
+                      View Detailed Features
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      <ul className="list-disc pl-5 space-y-1 text-neutral-600">
+                        {feature.details.map((detail, idx) => (
+                          <li key={idx}>{detail}</li>
+                        ))}
+                      </ul>
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+                
                 <Link to={feature.href}>
                   <Button variant="outline" className="group">
                     Explore

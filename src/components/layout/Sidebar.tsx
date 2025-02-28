@@ -13,11 +13,19 @@ import {
   BarChart2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export function Sidebar() {
   const location = useLocation();
   const [collapsed, setCollapsed] = useState(false);
+
+  // Emit custom event when sidebar state changes
+  useEffect(() => {
+    const event = new CustomEvent("sidebarStateChange", {
+      detail: { collapsed }
+    });
+    window.dispatchEvent(event);
+  }, [collapsed]);
 
   const navigation = [
     {
