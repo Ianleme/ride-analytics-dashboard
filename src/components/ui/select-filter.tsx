@@ -11,11 +11,13 @@ import {
 interface SelectFilterProps {
   options: { value: string; label: string }[];
   placeholder: string;
+  value?: string;
+  onChange?: (value: string) => void;
 }
 
-export function SelectFilter({ options, placeholder }: SelectFilterProps) {
+export function SelectFilter({ options, placeholder, value, onChange }: SelectFilterProps) {
   return (
-    <Select>
+    <Select value={value} onValueChange={onChange}>
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
