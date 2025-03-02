@@ -23,7 +23,7 @@ export function KPICard({
   return (
     <Card 
       className={cn(
-        "p-6 hover-scale bg-gradient-to-br border transition-all duration-300 animate-fade-in",
+        "p-6 hover-scale bg-white border transition-all duration-300 animate-fade-in",
         className
       )}
     >

@@ -28,6 +28,7 @@ const Index = () => {
   const [userType, setUserType] = useState<string>("all");
   const [bikeType, setBikeType] = useState<string>("all");
 
+  // Fix type error by creating a handler that matches the expected type
   const handleDateRangeChange = (value: DateRange) => {
     setDateRange(value);
   };
@@ -36,7 +37,7 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-br from-background to-secondary/30 p-6 md:p-8">
       {/* Dashboard Header */}
       <div className="animate-fadeIn rounded-xl mb-8 overflow-hidden">
-        <div className="glass-card p-6 border-b border-border">
+        <div className="bg-white p-6 border-b border-border shadow-sm rounded-xl">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
             <div>
               <h1 className="text-2xl font-bold text-foreground">Dashboard Overview</h1>
@@ -97,7 +98,7 @@ const Index = () => {
           change="+12.3% vs last month"
           trend="up"
           icon={<Bike className="h-6 w-6 text-primary/70" />}
-          className="from-primary/5 to-primary/10 border-primary/20 shadow-md hover:shadow-lg"
+          className="border shadow-sm"
         />
         <KPICard
           title="Average Duration"
@@ -105,7 +106,7 @@ const Index = () => {
           change="-2.1% vs last month"
           trend="down"
           icon={<Clock className="h-6 w-6 text-amber-500/70" />}
-          className="from-amber-50 to-amber-100/30 border-amber-200/50 shadow-md hover:shadow-lg"
+          className="border shadow-sm"
         />
         <KPICard
           title="Monthly Growth"
@@ -113,7 +114,7 @@ const Index = () => {
           change="5.3% higher than target"
           trend="up"
           icon={<TrendingUp className="h-6 w-6 text-emerald-500/70" />}
-          className="from-emerald-50 to-emerald-100/30 border-emerald-200/50 shadow-md hover:shadow-lg"
+          className="border shadow-sm"
         />
         <KPICard
           title="Member/Casual Split"
@@ -121,7 +122,7 @@ const Index = () => {
           change="2% more members"
           trend="up"
           icon={<Users className="h-6 w-6 text-accent/70" />}
-          className="from-accent/10 to-accent/20 border-accent/30 shadow-md hover:shadow-lg"
+          className="border shadow-sm"
         />
       </div>
 
@@ -129,7 +130,7 @@ const Index = () => {
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4 text-foreground">Featured Metrics</h2>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <Card className="glass-card p-6 col-span-1 lg:col-span-2 hover-scale animate-fade-in">
+          <Card className="bg-white p-6 col-span-1 lg:col-span-2 hover-scale animate-fade-in shadow-sm">
             <div className="flex items-center justify-between mb-4">
               <div>
                 <h3 className="text-lg font-semibold text-foreground">Ride Volume Trends</h3>
@@ -140,7 +141,7 @@ const Index = () => {
             <TrendChart />
           </Card>
           
-          <Card className="glass-card p-6 hover-scale animate-fade-in">
+          <Card className="bg-white p-6 hover-scale animate-fade-in shadow-sm">
             <div className="flex items-center justify-between mb-4">
               <div>
                 <h3 className="text-lg font-semibold text-foreground">Weather Impact</h3>
@@ -200,7 +201,7 @@ const Index = () => {
             View by Location
           </Button>
         </div>
-        <Card className="glass-card p-6 hover-scale animate-fade-in">
+        <Card className="bg-white p-6 hover-scale animate-fade-in shadow-sm">
           <DemandHeatmap />
         </Card>
       </div>
@@ -208,7 +209,7 @@ const Index = () => {
       {/* Top Routes */}
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4 text-foreground">Popular Routes Analysis</h2>
-        <Card className="glass-card p-6 hover-scale animate-fade-in">
+        <Card className="bg-white p-6 hover-scale animate-fade-in shadow-sm">
           <TopRoutesTable />
         </Card>
       </div>
