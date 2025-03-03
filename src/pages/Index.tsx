@@ -1,9 +1,9 @@
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { KPICard } from "@/components/dashboard/KPICard";
 import { TrendChart } from "@/components/dashboard/TrendChart";
 import { DemandHeatmap } from "@/components/dashboard/DemandHeatmap";
 import { TopRoutesTable } from "@/components/dashboard/TopRoutesTable";
+import { PortfolioIntro } from "@/components/portfolio/PortfolioIntro";
 import {
   ArrowUpRight,
   Calendar,
@@ -23,19 +23,32 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 
 type DateRange = { from: Date; to: Date } | undefined;
 
+const STORAGE_KEY = "portfolio-dashboard-intro-shown";
+
 const Index = () => {
   const [dateRange, setDateRange] = useState<DateRange>(undefined);
   const [userType, setUserType] = useState<string>("all");
   const [bikeType, setBikeType] = useState<string>("all");
+  const [showIntro, setShowIntro] = useState(false);
 
-  // Fix type error by creating a handler that matches the expected type
+  useEffect(() => {
+    const hasSeenIntro = localStorage.getItem(STORAGE_KEY) === "true";
+    setShowIntro(!hasSeenIntro);
+  }, []);
+
+  const handleCloseIntro = () => {
+    localStorage.setItem(STORAGE_KEY, "true");
+    setShowIntro(false);
+  };
+
   const handleDateRangeChange = (value: DateRange) => {
     setDateRange(value);
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-secondary/30 p-6 md:p-8">
-      {/* Dashboard Header */}
+      {showIntro && <PortfolioIntro onClose={handleCloseIntro} />}
+      
       <div className="animate-fadeIn rounded-xl mb-8 overflow-hidden">
         <div className="bg-white p-6 border-b border-border shadow-sm rounded-xl">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
@@ -90,7 +103,6 @@ const Index = () => {
         </div>
       </div>
       
-      {/* KPI Cards Section */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <KPICard
           title="Total Rides"
@@ -126,7 +138,6 @@ const Index = () => {
         />
       </div>
 
-      {/* Featured Metrics */}
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4 text-foreground">Featured Metrics</h2>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -192,7 +203,6 @@ const Index = () => {
         </div>
       </div>
       
-      {/* Demand Heatmap */}
       <div className="mb-8">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-semibold text-foreground">Demand Distribution</h2>
@@ -206,7 +216,6 @@ const Index = () => {
         </Card>
       </div>
 
-      {/* Top Routes */}
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4 text-foreground">Popular Routes Analysis</h2>
         <Card className="bg-white p-6 hover-scale animate-fade-in shadow-sm">
