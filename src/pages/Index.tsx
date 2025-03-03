@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { KPICard } from "@/components/dashboard/KPICard";
 import { TrendChart } from "@/components/dashboard/TrendChart";
@@ -22,13 +21,12 @@ import { DateRangePicker } from "@/components/ui/date-range-picker";
 import { SelectFilter } from "@/components/ui/select-filter";
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-
-type DateRange = { from: Date; to: Date } | undefined;
+import { DateRange } from "react-day-picker";
 
 const STORAGE_KEY = "portfolio-dashboard-intro-shown";
 
 const Index = () => {
-  const [dateRange, setDateRange] = useState<DateRange>(undefined);
+  const [dateRange, setDateRange] = useState<DateRange | undefined>(undefined);
   const [userType, setUserType] = useState<string>("all");
   const [bikeType, setBikeType] = useState<string>("all");
   const [showIntro, setShowIntro] = useState(false);
@@ -67,7 +65,7 @@ const Index = () => {
             <div className="flex flex-col sm:flex-row items-end sm:items-center space-y-3 sm:space-y-0 sm:space-x-3 w-full lg:w-auto">
               <DateRangePicker
                 value={dateRange}
-                onChange={handleDateRangeChange}
+                onChange={setDateRange}
               />
               <div className="flex space-x-2 w-full sm:w-auto">
                 <SelectFilter
