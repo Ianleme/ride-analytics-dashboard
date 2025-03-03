@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { KPICard } from "@/components/dashboard/KPICard";
 import { TrendChart } from "@/components/dashboard/TrendChart";
@@ -14,6 +15,7 @@ import {
   Bike,
   MapPin,
   ThermometerSun,
+  Info,
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { DateRangePicker } from "@/components/ui/date-range-picker";
@@ -39,6 +41,10 @@ const Index = () => {
   const handleCloseIntro = () => {
     localStorage.setItem(STORAGE_KEY, "true");
     setShowIntro(false);
+  };
+
+  const handleShowIntro = () => {
+    setShowIntro(true);
   };
 
   const handleDateRangeChange = (value: DateRange) => {
@@ -85,19 +91,30 @@ const Index = () => {
                   placeholder="Bike Type"
                 />
               </div>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="outline" className="flex-shrink-0">
-                    Export
-                    <ArrowUpRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuItem>Export as CSV</DropdownMenuItem>
-                  <DropdownMenuItem>Export as PDF</DropdownMenuItem>
-                  <DropdownMenuItem>Schedule Reports</DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <div className="flex space-x-2">
+                <Button 
+                  variant="outline" 
+                  size="icon"
+                  onClick={handleShowIntro}
+                  title="Show Portfolio Information"
+                  className="flex-shrink-0"
+                >
+                  <Info className="h-4 w-4" />
+                </Button>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="outline" className="flex-shrink-0">
+                      Export
+                      <ArrowUpRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuItem>Export as CSV</DropdownMenuItem>
+                    <DropdownMenuItem>Export as PDF</DropdownMenuItem>
+                    <DropdownMenuItem>Schedule Reports</DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
             </div>
           </div>
         </div>
